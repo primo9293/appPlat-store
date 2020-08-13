@@ -1,8 +1,8 @@
-<h3>Producto</h3>
-<div>
-    {{ product.title }}
-    <br>
-    <img [src]="product.image" alt="" weight="200px" height="200px">
-    <br> {{ product.price }}
-</div>
+<h4>Producto</h4>
+{{ product.title | uppercase }}
+<br>
+<img [src]="product.image" alt="">
+<br> {{ product.price | currency }}
+<p>{{ product.description | slice:0:10 }}</p>
+<p>{{ today | date }}</p>
 <button (click)="agregar()">Agregar el carrito</button>

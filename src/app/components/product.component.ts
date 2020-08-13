@@ -1,14 +1,32 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from '../producto.model';
 
 @Component({
     selector: 'app-product',
-    templateUrl: './product.component.html'
+    templateUrl: './product.component.html',
+    styleUrls: ['./product.component.scss']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit, OnChanges {
 
     @Input() product: Product;
     @Output() addCart: EventEmitter<any> = new EventEmitter();
+
+    today = new Date();
+
+    constructor(){
+        console.log('1 Constructor');
+    }
+
+    ngOnInit(){
+        console.log('2 Init');
+    }
+
+    ngOnChanges(changes: SimpleChanges){
+        // OnChanges es la forma nativa de mirar cambios
+        // DoCheck es la forma personalizada de mirar cambios
+        console.log('3 OnChanges');
+        console.log(changes);
+    }
 
     agregar(){
         console.log('Añadido');

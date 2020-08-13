@@ -1,15 +1,17 @@
 <!--
     Introduccion
-<h1>Hello</h1>
-<input type="text" [(ngModel)]="title"> {{title}}
-
-<div *ngIf="1 == 1">
-    Es un Div
-</div>
-<div *ngIf="title === 'carlos'">
-    Si es True
-</div>
-
+    <h1>Hello</h1>
+    <input type="text" [(ngModel)]="title"> {{title}}
+    
+    <div *ngIf="1 == 1">
+        Es un Div
+    </div>
+    <div *ngIf="title === 'carlos'">
+        Si es True
+    </div>
+    
+    <input type="text" [(ngModel)]="power">{{ power | exponential}}
+    
 <div [ngSwitch]="title">
     <p *ngSwitchCase="'ana'">Este es Ana</p>
     <p *ngSwitchCase="'carlos'">Este es Carlos</p>
@@ -34,9 +36,11 @@
     <br> {{ product.price }}
 </div>
 -->
-<div *ngFor="let product of products">
+
+
+<div class="product-grid">
     <!-- Output con parentesis Input con llaves cuadradas-->
-    <app-product (addCart)="clickProduct($event)" [product]="product"></app-product>
+    <app-product *ngFor="let product of products" (addCart)="clickProduct($event)" [product]="product"></app-product>
 </div>
 
 <router-outlet></router-outlet>
