@@ -1,3 +1,5 @@
+<!--
+    Introduccion
 <h1>Hello</h1>
 <input type="text" [(ngModel)]="title"> {{title}}
 
@@ -31,6 +33,10 @@
     <img [src]="product.image" alt="" weight="200px" height="200px">
     <br> {{ product.price }}
 </div>
-
+-->
+<div *ngFor="let product of products">
+    <!-- Output con parentesis Input con llaves cuadradas-->
+    <app-product (addCart)="clickProduct($event)" [product]="product"></app-product>
+</div>
 
 <router-outlet></router-outlet>
