@@ -8,6 +8,13 @@
     Si es True
 </div>
 
+<div [ngSwitch]="title">
+    <p *ngSwitchCase="'ana'">Este es Ana</p>
+    <p *ngSwitchCase="'carlos'">Este es Carlos</p>
+    <p *ngSwitchCase="'Platzi'">Este es Platzi</p>
+    <p *ngSwitchDefault>No hay lista</p>
+</div>
+
 <button (click)="addItem()">Add item</button>
 
 <ul>
@@ -17,5 +24,13 @@
         <button (click)="deleteItem(i)">Eliminar item</button>
     </li>
 </ul>
+
+<div *ngFor="let product of products">
+    {{ product.title }}
+    <br>
+    <img [src]="product.image" alt="" weight="200px" height="200px">
+    <br> {{ product.price }}
+</div>
+
 
 <router-outlet></router-outlet>
