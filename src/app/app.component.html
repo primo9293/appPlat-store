@@ -1,4 +1,21 @@
 <h1>Hello</h1>
 <input type="text" [(ngModel)]="title"> {{title}}
 
+<div *ngIf="1 == 1">
+    Es un Div
+</div>
+<div *ngIf="title === 'carlos'">
+    Si es True
+</div>
+
+<button (click)="addItem()">Add item</button>
+
+<ul>
+    <li *ngIf="items.length === 0">No hay Items</li>
+    <li *ngFor="let name of items; index as i">
+        {{ i }} {{ name }}
+        <button (click)="deleteItem(i)">Eliminar item</button>
+    </li>
+</ul>
+
 <router-outlet></router-outlet>

@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'appPlat-store';
+  // Introducción
+  items = ['Ana', 'Carlos'];
+
+  addItem(){
+    this.items.push('Nuevo');
+  }
+
+  deleteItem(index: number){
+    this.items.splice(index, 1);
+  }
+  //
 }
