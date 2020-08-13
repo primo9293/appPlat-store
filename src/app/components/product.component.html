@@ -1,5 +1,6 @@
 <h4>Producto</h4>
-{{ product.title | uppercase }}
+<!--Directiva appHighlight personalizada creada una mismo-->
+<h3 appHighlight>{{ product.title | uppercase }}</h3>
 <br>
 <img [src]="product.image" alt="">
 <br> {{ product.price | currency }}
