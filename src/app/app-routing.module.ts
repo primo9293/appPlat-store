@@ -4,13 +4,21 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';
+import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
+  { path: 'home',  component: HomeComponent},
   { path: 'products', component: ProductsComponent},
+  { path: 'products/:id', component: ProductDetailComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'demo', component: DemoComponent}
+  { path: 'demo', component: DemoComponent},
+  // Vacio component redirreciona a home
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  // Cualquier path diferente nombre redirreciona a home
+  // { path: '**', pathMatch: 'full', redirectTo: 'home' }
+  { path: '**', component: PageNotfoundComponent}
 ];
 
 @NgModule({

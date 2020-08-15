@@ -1,4 +1,4 @@
-<p>products works!</p>
+<app-header></app-header>
 <div class="product-grid">
     <!-- Output con parentesis Input con llaves cuadradas-->
     <app-product *ngFor="let product of products" (addCart)="clickProduct($event)" [product]="product"></app-product>
