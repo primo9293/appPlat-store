@@ -8,6 +8,7 @@ import { Product } from '../producto.model';
 })
 export class ProductsComponent implements OnInit {
 
+  /*
   products: Product[] = [
     {
       id: '1',
@@ -52,6 +53,7 @@ export class ProductsComponent implements OnInit {
       description: 'bla bla bla bla bla'
     }
   ];
+  */
 
   constructor() { }
 
