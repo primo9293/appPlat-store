@@ -1,38 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+// Routing Principal
 import { AppRoutingModule } from './app-routing.module';
+// Components
 import { AppComponent } from './app.component';
-import { ProductComponent } from './components/product.component';
+import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
-import { ExponentialPipe } from './pipe/exponential.pipe';
-import { HighlightDirective } from './directive/highlight.directive';
-import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { BannerComponent } from './banner/banner.component';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LayoutComponent } from './anidado/layout/layout.component';
+// Module
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+// Se comparte el header y footer
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+// Se comparte el pipe y directive
+import { ExponentialPipe } from './pipe/exponential.pipe';
+import { HighlightDirective } from './directive/highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     CartComponent,
-    ExponentialPipe,
+    ExponentialPipe ,
     HighlightDirective,
-    HomeComponent,
     ProductsComponent,
     ContactComponent,
     DemoComponent,
     HeaderComponent,
     FooterComponent,
-    BannerComponent,
     PageNotfoundComponent,
     ProductDetailComponent,
     LayoutComponent
@@ -40,7 +42,9 @@ import { LayoutComponent } from './anidado/layout/layout.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
