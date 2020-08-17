@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LayoutComponent } from './anidado/layout/layout.component';
+
+import { AdminGuard } from './admin.guard';
 
 
 const routes: Routes = [
@@ -33,9 +33,12 @@ const routes: Routes = [
         // Despues - Coloco el LoadChildren para cargar un module
         loadChildren: () => import('./home/home.module').then( m => m.HomeModule)
       },
-      { path: 'products', component: ProductsComponent},
-      { path: 'products/:id', component: ProductDetailComponent},
-      { path: 'contact', component: ContactComponent},
+      {
+        path: 'products',
+        canActivate: [AdminGuard],
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+      },
+      { path: 'contact', canActivate: [AdminGuard], component: ContactComponent},
     ]
   },
   // Cualquier path diferente nombre redirreciona a home
