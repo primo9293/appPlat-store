@@ -17,24 +17,24 @@ import { LayoutComponent } from './anidado/layout/layout.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 // Se comparte el header y footer
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+// import { HeaderComponent } from './header/header.component';
+// import { FooterComponent } from './footer/footer.component';
 // Se comparte el pipe y directive
-import { ExponentialPipe } from './pipe/exponential.pipe';
-import { HighlightDirective } from './directive/highlight.directive';
+// import { ExponentialPipe } from './pipe/exponential.pipe';
+// import { HighlightDirective } from './directive/highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     CartComponent,
-    ExponentialPipe ,
-    HighlightDirective,
+    // ExponentialPipe ,
+    // HighlightDirective,
     ProductsComponent,
     ContactComponent,
     DemoComponent,
-    HeaderComponent,
-    FooterComponent,
+    // HeaderComponent,
+    // FooterComponent,
     PageNotfoundComponent,
     ProductDetailComponent,
     LayoutComponent
