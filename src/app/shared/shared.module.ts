@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 // import { HighlightDirective } from '../directive/highlight.directive';
 // import { HeaderComponent } from '../header/header.component';
 // import { FooterComponent } from '../footer/footer.component';
+import { MaterialModule } from './../material/material.module';
 
 
 
@@ -29,7 +30,8 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
     // ExponentialPipe,
     // HighlightDirective
     // HeaderComponent,
