@@ -13,6 +13,7 @@ import { LayoutComponent } from './anidado/layout/layout.component';
 // Module
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Se comparte el header y footer
 // import { HeaderComponent } from './header/header.component';
 // import { FooterComponent } from './footer/footer.component';
@@ -41,7 +42,8 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     FormsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
