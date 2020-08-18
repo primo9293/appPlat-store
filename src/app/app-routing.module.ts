@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
-import { DemoComponent } from './demo/demo.component';
-import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
-import { LayoutComponent } from './anidado/layout/layout.component';
+
+import { LayoutComponent } from './layout/layout.component';
 
 import { AdminGuard } from './admin.guard';
 
@@ -15,7 +13,6 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailComponent},
   { path: 'contact', component: ContactComponent},
   */
-  { path: 'demo', component: DemoComponent},
   // Vacio component redirreciona a home
   { path: '',
     component: LayoutComponent,
@@ -25,8 +22,8 @@ const routes: Routes = [
     */
     children: [
       { path: '',
-        pathMatch: 'full',
-        redirectTo: 'home'
+      redirectTo: 'home',
+      pathMatch: 'full'
       },
       { path: 'home',
         // Antes component: HomeComponent
@@ -38,13 +35,24 @@ const routes: Routes = [
         canActivate: [AdminGuard],
         loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
       },
-      { path: 'contact', canActivate: [AdminGuard], component: ContactComponent},
+      {
+        path: 'contact',
+        canActivate: [AdminGuard],
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+      },
+      {
+        path: 'demo',
+        canActivate: [AdminGuard],
+        loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+      },
     ]
   },
   // Cualquier path diferente nombre redirreciona a home
   // { path: '**', pathMatch: 'full', redirectTo: 'home' }
-  { path: '**', component: PageNotfoundComponent}
-];
+  {
+    path: '**',
+    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
