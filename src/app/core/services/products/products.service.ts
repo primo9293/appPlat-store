@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../../producto.model';
+import { HttpClient } from '@angular/common/http';
+
+import { environment } from './../../../../environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
+  /*
   products: Product[] = [
     {
       id: '1',
@@ -50,14 +56,31 @@ export class ProductsService {
       description: 'bla bla bla bla bla'
     }
   ];
+  */
 
-  constructor() { }
+  // let url = 'http://platzi-store.herokuapp.com/products/';
+  urlApi = environment.url_api;
+  constructor(private http: HttpClient) { }
 
   getAllproducts() {
-    return this.products;
+    // return this.products;
+    return this.http.get<Product[]>(this.urlApi);
   }
 
   getProduct(id: string) {
-    return this.products.find(item => id === item.id );
+    // return this.products.find(item => id === item.id );
+    return this.http.get<Product>(`${this.urlApi}${id}`);
+  }
+
+  createProduct(product: Product){
+    return this.http.post<Product>(`${this.urlApi}`, product );
+  }
+
+  updateProduct(id: string, changes: Partial<Product>){
+    return this.http.put<Product>(`${this.urlApi}${id}`, changes );
+  }
+
+  deleteProduct(id: string){
+    return this.http.delete<Product>(`${this.urlApi}${id}`);
   }
 }

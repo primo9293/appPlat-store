@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './../../../core/models/product.model';
 
+import { ProductsService } from '../../../core/services/products/products.service';
+
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -8,7 +11,7 @@ import { Product } from './../../../core/models/product.model';
 })
 export class ProductsComponent implements OnInit {
 
-
+  /*
   products: Product[] = [
     {
       id: '1',
@@ -53,15 +56,26 @@ export class ProductsComponent implements OnInit {
       description: 'bla bla bla bla bla'
     }
   ];
+  */
 
+ products: Product[] = [];
 
-  constructor() { }
+  constructor( private productsService: ProductsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.fectProducts();
   }
 
   clickProduct(id: number){
     console.log('Product', id);
+  }
+
+  fectProducts(){
+    this.productsService.getAllproducts()
+        .subscribe( productsData => {
+          console.log(productsData);
+          this.products = productsData;
+        });
   }
 
 }
