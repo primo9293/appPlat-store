@@ -18,6 +18,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Se comparte el pipe y directive
 // import { ExponentialPipe } from './pipe/exponential.pipe';
 // import { HighlightDirective } from './directive/highlight.directive';
+// Angular Fire2
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +49,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     CoreModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

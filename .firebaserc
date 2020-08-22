@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "platz-store": {
+      "hosting": {
+        "appPlat-store": [
+          "platz-store"
+        ]
+      }
+    }
+  }
+}
