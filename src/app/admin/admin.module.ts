@@ -24,11 +24,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu'; */
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { FormProductComponent } from './components/form-product/form-product.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 // ng g m --routing crea el modulo con el routing de una vez
 
 @NgModule({
-  declarations: [ProductFormComponent, NavComponent, TableComponent, DashboardComponent, ProductListComponent, FormProductComponent],
+  declarations: [ProductFormComponent, NavComponent, TableComponent, DashboardComponent, ProductListComponent, FormProductComponent, ProductEditComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from '../../../core/models/product.model';
 
+import { CartService } from '../../../core/services/cart.service';
+
 
 @Component({
     selector: 'app-product',
@@ -14,7 +16,7 @@ export class ProductComponent implements OnInit, OnChanges {
 
     today = new Date();
 
-    constructor(){
+    constructor( private cartService: CartService){
         console.log('1 Constructor');
     }
 
@@ -31,7 +33,8 @@ export class ProductComponent implements OnInit, OnChanges {
 
     agregar(){
         console.log('Añadido');
-        this.addCart.emit(this.product.id);
+        this.cartService.addCart(this.product);
+        // this.addCart.emit(this.product.id);
     }
     /* Se hace con Input
     products: Product[] = [
