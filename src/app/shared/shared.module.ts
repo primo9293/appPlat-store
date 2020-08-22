@@ -14,6 +14,7 @@ import { CartComponent } from './components/cart/cart.component';
 // import { HeaderComponent } from '../header/header.component';
 // import { FooterComponent } from '../footer/footer.component';
 import { MaterialModule } from './../material/material.module';
+import { UniquePipe } from './pipes/unique/unique.pipe';
 
 
 
@@ -23,14 +24,16 @@ import { MaterialModule } from './../material/material.module';
     HighlightDirective,
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    UniquePipe
   ],
   exports: [
     ExponentialPipe,
     HighlightDirective,
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    UniquePipe
   ],
   imports: [
     CommonModule,
