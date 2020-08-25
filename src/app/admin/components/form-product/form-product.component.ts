@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 import { ProductsService } from './../../../core/services/products/products.service';
 import { MyValidators } from '../../../utils/validators';
+
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -14,15 +19,38 @@ import { MyValidators } from '../../../utils/validators';
 export class FormProductComponent implements OnInit {
 
   form: FormGroup;
-
+  image$: Observable<any>;
 
   constructor(private formBuilder: FormBuilder,
               private productsService: ProductsService,
-              private router: Router) {
+              private router: Router,
+              private angularFireSto: AngularFireStorage) {
     this.buildForm();
    }
 
   ngOnInit(): void {
+  }
+
+  uploadFile(event){
+   const file = event.target.files[0];
+   // console.log(file);
+   const namedirectorio = 'images';
+   const fileRef = this.angularFireSto.ref(namedirectorio);
+   // Tarea le enviamos la ruta y el archivo a subir
+   const task = this.angularFireSto.upload(namedirectorio, file);
+
+   task.snapshotChanges()
+       .pipe(
+         // Ruta qeu genera Firebase donde guardo la imagen
+        finalize(() => {
+        this.image$ = fileRef.getDownloadURL();
+        this.image$.subscribe(url => {
+          console.log(url);
+          this.form.get('image').setValue(url);
+        });
+      })
+    )
+       .subscribe();
   }
 
   private buildForm() {
