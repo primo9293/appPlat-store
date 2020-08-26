@@ -109,6 +109,7 @@ dist
 # compiled output
 /dist
 /tmp
+/.firebase
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
