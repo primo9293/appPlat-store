@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../../producto.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { environment } from './../../../../environments/environment';
 
+import { Observable, throwError } from 'rxjs';
+import { map, catchError, retry } from 'rxjs/operators';
+
+
+interface User {
+  email: string;
+  gender: string;
+  phone: string;
+}
 
 
 @Injectable({
@@ -81,6 +90,47 @@ export class ProductsService {
   }
 
   deleteProduct(id: string){
-    return this.http.delete<Product>(`${this.urlApi}${id}`);
+    return this.http.delete<Product>(`${this.urlApi}${id}`)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
+
+  /*
+  getRandomUsers(): Observable<User[]> {
+    return this.http.get('https://randomuser.me/api/?results=2')
+    .pipe(
+      map((response: any) => response.results as User[])
+      );
+    }
+
+      getRandomUsers(): Observable<User[]> {
+    return this.http.get('https://randomuser.me/api/?results=2')
+    .pipe(
+      catchError(error => {
+        return throwError('Error');
+      }),
+      map((response: any) => response.results as User[])
+    );
+  }
+
+
+    */
+
+   getRandomUsers(): Observable<User[]> {
+    return this.http.get('https://randomuser.me/api/?results=2')
+    .pipe(
+      retry(3), // Se repite tres veces si llega a fallar
+      catchError(this.handleError),
+      map((response: any) => response.results as User[])
+    );
+  }
+
+  // Sentry para manejar errores
+
+    private handleError(error: HttpErrorResponse) {
+     console.log(error);
+     return throwError('Ups algo salio mal');
+   }
+
 }

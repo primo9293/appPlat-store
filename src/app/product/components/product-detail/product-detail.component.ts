@@ -80,9 +80,12 @@ export class ProductDetailComponent implements OnInit {
 
   deleteProduct() {
     this.productsService.deleteProduct('10')
-        .subscribe(productData => {
+        .subscribe(productData => {  // Bien
           console.log(productData);
           // this.product = productData;
+        },
+        error => {
+          console.log(error);
         });
   }
 
