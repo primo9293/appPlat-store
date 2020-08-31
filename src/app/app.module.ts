@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -24,6 +25,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from '../environments/environment';
+
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -54,7 +57,13 @@ import { environment } from '../environments/environment';
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide:  HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+   }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

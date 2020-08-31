@@ -40,6 +40,12 @@ export class LoginComponent implements OnInit {
     console.log(this.form.value);
   }
 
+  loginApi(){
+    this.authService.loginRestApi('carlos@carlos.com', '123456abc')
+        .subscribe( data => {
+          console.log(data);
+        });
+  }
 
   private buildForm() {
     this.form = this.formBuilder.group({
